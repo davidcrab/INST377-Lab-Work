@@ -21,6 +21,7 @@ async function mainEvent() { // the async keyword means we can make API requests
     const formData = new FormData(submitEvent.target); // get the data from the listener target
     const formProps = Object.fromEntries(formData); // Turn it into an object
 
+
     // You can also access all forms in a document by using the document.forms collection
     // But this will retrieve ALL forms, not just the one that "heard" a submit event - less good
 
@@ -35,7 +36,10 @@ async function mainEvent() { // the async keyword means we can make API requests
       // It does not include any of your form values, though
     */
 
-    const results = await fetch('/api/foodServicePG');
+    // const results = await fetch('/api/foodServicePG');
+
+    const results = await fetch(`/api/foodServicePG?${new URLSearchParams(formProps)}`);
+
     /*
    ## Get request with query parameters
 
