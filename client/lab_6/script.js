@@ -38,10 +38,13 @@ function getRandomIntInclusive(min, max) {
 function processRestaurants(list) {
   console.log('fired restaurants list');
 
+  // const picked = (({ a, c }) => ({ a, c }))(object);
+
+
   const range = [...Array(15).keys()];
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
-    return list[index];
+    return (({name, category, address_line_1 }) => ({name, category, address_line_1}))(list[index]);
   });
   return newArray;
   /*
