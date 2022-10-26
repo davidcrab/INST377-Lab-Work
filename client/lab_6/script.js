@@ -29,9 +29,21 @@ function injectHTML(list) {
 */
 }
 
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+}
+
 function processRestaurants(list) {
   console.log('fired restaurants list');
 
+  const range = [...Array(15).keys()];
+  const newArray = range.map((item) => {
+    const index = getRandomIntInclusive(0, list.length);
+    return list[index];
+  });
+  return newArray;
   /*
     ## Process Data Separately From Injecting It
       This function should accept your 1,000 records
@@ -50,6 +62,7 @@ function processRestaurants(list) {
     - Return only their name, category, and location
     - Return the new list of 15 restaurants so we can work on it separately in the HTML injector
   */
+
 }
 
 async function mainEvent() {
@@ -70,7 +83,7 @@ async function mainEvent() {
     This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js
     It's at about line 27 - go have a look and see what we're retrieving and sending back.
    */
-  const results = await fetch('/api/foodServicesPG');
+  const results = await fetch('/api/foodServicePG');
   const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
 
   /*
@@ -100,7 +113,7 @@ async function mainEvent() {
 
       // This constant will have the value of your 15-restaurant collection when it processes
       const restaurantList = processRestaurants(arrayFromJson.data);
-
+      console.log(restaurantList);
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(restaurantList);
 

@@ -7,3 +7,55 @@
 
     Try placing it at the same level in your element tree as your Submit button
 -->
+
+<!-- Bring in your successful HTML/CSS from the Flexbox lab -->
+<!-- Your page will need a form in it with an 'action' to /api and a single text field with an id/name of "resto" -->
+<!-- If you open /routes/apiRoutes and go to line 38 you will find the server side answer to your request! -->
+
+<!-- Temporarily unhook your script.js file from your main index file -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--this is hidden head-->
+    <link rel='stylesheet' href='style.css'/>
+    <title>David Crabtree's Homepage for INST337 Labs</title>
+  </head>
+  <body>
+    <header class="header">
+        <h1 class="header">David Crabtree's Homepage for INST337 Labs</h1>
+    </header>
+
+    <div class="content">
+        <div class="container">
+            <div class="smaller-container">
+
+                <form class="main_form" method="GET" action="/api">
+                    <h1>Form Inputs</h1>
+                    <label for="resto">Restaurant</label>
+                    <input name="resto" id="resto" />
+                    <button class="button" type="submit" id="submit">Submit</button>
+                </form>
+            </div>
+            <div class="map">
+                <div>
+                    <h1>Local Restaurants Map</h1>
+                    <ol>
+                        <li>Restaurant 1</li>
+                        <li>Restaurant 1</li>
+                        <li>Restaurant 1</li>
+                        <li>Restaurant 1</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+      davidcrab on
+      <a href='https://github.com/davidcrab'>Github</a>
+    </footer>
+
+    <script src="script.js" ></script>
+  </body>
+</html>
