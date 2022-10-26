@@ -13,6 +13,27 @@
 
 function injectHTML(list) {
   console.log('fired injectHTML');
+
+  const target = document.querySelector('#restaurant_list');
+
+  target.innerHTML = '';
+
+  const listElement = document.createElement('ol');
+  target.appendChild(listElement);
+
+  list.forEach(item => {
+    const element = document.createElement('li');
+    element.innerText = item.name;
+    listElement.append(element);
+    // after adding name, add cat
+    const catEl = document.createElement('ul');
+    element.appendChild(catEl);
+
+    const catText = document.createElement('li');
+    catText.innerText = item.category;
+    catEl.append(catText);
+  })
+
   /*
   ## JS and HTML Injection
     There are a bunch of methods to inject text or HTML into a document using JS
@@ -37,7 +58,7 @@ function getRandomIntInclusive(min, max) {
 
 function processRestaurants(list) {
   console.log('fired restaurants list');
-  
+
   const range = [...Array(15).keys()];
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
